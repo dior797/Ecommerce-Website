@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=10">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/bootstrap.bundle.js"></script>
+  <title>Bootstrap 5 template</title>
+  <style>
+
+   input[type=text], select {
+   width: 100%;
+   padding: 12px 20px;
+   margin: 10px 0;
+   display: inline-block;
+   border: 1px solid black;
+   border-radius: 4px;
+   box-sizing: border-box;
+ }
+ input[type=email], select {
+   width: 100%;
+   padding: 12px 20px;
+   margin: 10px 0;
+   display: inline-block;
+   border: 1px solid black;
+   border-radius: 4px;
+   box-sizing: border-box;
+ }
+ 
+ input[type=submit] {
+   width: 100%;
+   background-color: slategray;
+   color: black;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+ 
+ input[type=submit]:hover {
+   background-color: lightslategray;
+ }
+ 
+ .forms {
+   width:500px;
+   margin-left: 520px;
+   border-radius: 5px;
+   padding: 20px;
+ }
+ .navbar-nav {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+
+</style>
+</head>
+
+<body>
+  <img src="Logo/logo.png" id="logoo">
+
+  <nav class="navbar navbar-expand-lg" style="background-color:white;">
+
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="About me page.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shop.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="termsncondition.html">Terms & Conditions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="subscribe.html">Subscribe</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Frequently asked questions
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">What materials are the pillows made out of?</a></li>
+              <li><a class="dropdown-item" href="#">How long will the pillows last?</a></li>
+              <li><a class="dropdown-item" href="#">Ask a question.</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+
+
+   <div class="forms">
+       <form name="registration" onSubmit="return validation();">
+           <fieldset>
+               <legend style="text-align: center;">Subscription</legend> <br>
+               <label>First Name: </label> <br>
+               <input type="text" placeholder="First Name" name="fname"> <br>
+               <label>Last Name: </label> <br>
+               <input type="text" placeholder="Last Name" name="lname"> <br>
+               <label>Email: </label> <br>
+               <input type="email" placeholder="Email" name="email"> <br>
+               <label>Gender</label> <br>
+               <select name="gname">
+                   <option selected="" value="Default">Select</option>
+                   <option>Male</option>
+                   <OPTION>Female</OPTION>
+               </select> <br>
+               <label>Phone Number: </label> <br>
+               <input type="text" placeholder="Phone Number" name="number"> <br> <br>
+               <input type="submit" value="Submit">
+           </fieldset>
+       </form>
+   </div>
+
+
+
+
+
+
+<script>
+   function validation() {
+       var firstname = document.registration.fname;
+       var lastname = document.registration.lname;
+       var email = document.registration.email;
+       var gname = document.registration.gname;
+       var number = document.registration.number;
+   
+       if (allLettername(firstname)) {
+           if (allLetterlast(lastname)) {
+               if (allgmail(gmail)) {
+               if (genderSelect(gname)) {
+                   if (Mobile(number)) {
+   
+                   }
+               }
+           }
+           }
+       }
+       return false;
+   }
+   
+   function allLettername(firstname) {
+       var letters = /^[A-Za-z]+$/;
+       if (firstname.value.length == 0) {
+           alert('Please enter you first name');
+           firstname.focus();
+           return false;
+       }
+       else if (firstname.value.match(letters)) {
+           return true;
+       }
+       else {
+           alert('First name must have alphabet characters only');
+           firstname.focus();
+           return false;
+       }
+   }
+   
+   function allLetterlast(lastname) {
+       var letters = /^[A-Za-z]+$/;
+       if (lastname.value.length == 0) {
+           alert('Please enter you last name');
+           lastname.focus();
+           return false;
+       }
+       else if (lastname.value.match(letters)) {
+           return true;
+       }
+       else {
+           alert('Last name must have alphabet characters only');
+           lastname.focus();
+           return false;
+       }
+   }
+
+   function allgmail(email) {
+       var letters = /[A-Za-z]+@+./;
+       if (email.value.length == 0) {
+           alert('Please enter your email');
+           email.focus();
+           return false;
+       }
+       else if (email.value.match(letters)) {
+           return true;
+       }
+       else {
+           alert('Error');
+           email.focus();
+           return false;
+       }
+   }
+   
+   function Mobile(number) {
+       var numbers = /^[0-9]+$/;
+       if (number.value.length == 0) {
+           alert('Please enter your phone number');
+           number.focus();
+           return false;
+       }
+       else if (number.value.match(numbers)) {
+           return true;
+       }
+       else {
+           alert('Phone number can only have numerical values');
+           number.focus();
+           return false;
+       }
+   }
+   
+</script>
+
+
+  <div class="footer">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="About me page.html">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Shop.html">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="termsncondition.html">Terms & Conditions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">FAQ's</a>
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

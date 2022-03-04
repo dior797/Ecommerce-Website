@@ -1,0 +1,94 @@
+html {
+    background-color: white;
+    overflow-x: hidden;
+  }
+
+  #p1 {
+
+    height: 800px;
+
+  }
+
+  #p2 {
+    height: 800px;
+  }
+
+  #p3 {
+    height: 800px;
+
+  }
+
+  #featured {
+    height: 650px;
+  }
+ 
+  #logoo {
+margin-left: 650px;
+  }
+
+
+  .card-img-overlay {
+    height: 300px;
+  }
+
+  .titlefeatured {
+    text-align: center;
+    text-decoration: underline;
+
+  }
+
+  .card {
+    text-align: center;
+    background-color: white;
+    width: 80%;
+    }
+
+  .cards {
+    display: flex;
+    margin-bottom: 110px;
+    
+  }
+
+  .card-header {
+    background-color: black;
+    color: white;
+    text-decoration: underline;
+  }
+
+
+  .card-body {
+    text-align: center;
+  }
+
+  #pillowfeatured {
+    height: 505.5px;
+  }
+  .aboutme {
+    margin-left: 18px;
+  }
+
+  .aboutme h2 {
+    text-decoration: underline;
+    text-align: center;
+
+  }
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+  .FAQ h2 {
+    text-decoration: underline;
+    text-align: center;
+  }
+  .pvp{
+    text-align: center;
+  }
+  .pvp h2 {
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  .footer {
+    background-color: rgb(189, 189, 189);
+  }

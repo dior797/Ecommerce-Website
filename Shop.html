@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=10">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/bootstrap.bundle.js"></script>
+  <title>Bootstrap 5 template</title>
+  <style>
+
+* {box-sizing: border-box;}
+
+.img-magnifier-container {
+  display: flex;
+  position:relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border:1px solid black;
+  border-radius: 100%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 75px;
+  height: 75px;
+  margin-left:20px;
+}
+
+.description{
+margin-left: 100px;
+margin-bottom:150px;
+}
+
+#original{
+  text-decoration: line-through black;
+  
+}
+
+#discount{
+  color: red;
+}
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+.footer{
+  margin-top: 30px;
+}
+  </style>
+</head>
+<body>
+  <img src="Logo/logo.png" id="logoo" >
+
+  <nav class="navbar navbar-expand-lg" style="background-color:white;">
+
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="About me page.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shop.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="termsncondition.html">Terms & Conditions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="subscribe.html">Subscribe</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Frequently asked questions
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">What materials are the pillows made out of?</a></li>
+              <li><a class="dropdown-item" href="#">How long will the pillows last?</a></li>
+              <li><a class="dropdown-item" href="#">Ask a question.</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="Shop.html" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="Shop.html">1</a></li>
+      <li class="page-item"><a class="page-link" href="shop2.html">2</a></li>
+      <li class="page-item">
+        <a class="page-link" href="shop2.html" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <br><br><br>
+
+
+  <script>
+    function magnify(imgID, zoom) {
+  var img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+  /*create magnifier glass:*/
+  glass = document.createElement("DIV");
+  glass.setAttribute("class", "img-magnifier-glass");
+  /*insert magnifier glass:*/
+  img.parentElement.insertBefore(glass, img);
+  /*set background properties for the magnifier glass:*/
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+  /*execute a function when someone moves the magnifier glass over the image:*/
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+  /*and also for touch screens:*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+  function moveMagnifier(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+    /*prevent the magnifier glass from being positioned outside the image:*/
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x < w / zoom) {x = w / zoom;}
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y < h / zoom) {y = h / zoom;}
+    /*set the position of the magnifier glass:*/
+    glass.style.left = (x - w) + "px";
+    glass.style.top = (y - h) + "px";
+    /*display what the magnifier glass "sees":*/
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+    </script>
+
+
+<div class="img-magnifier-container">
+  <img id="myimage" src="Images/featuredpillow.jpg" width="600" height="400">
+  <div class="description">
+    <h2>Cacti wool pillow</h2>
+    <br>
+    <p>
+      This luxerious cacti pillow made of high quality Merino wool which is known to be the highest quality wool in the world, straight from the sheep of Ireland.
+    </p>
+    <p id="original">
+      Price:$200,000
+    </p>
+    <p id="discount">
+      Sale:$199,999
+    </p>
+    <br><br>
+
+    <p>
+      <a href="Shop.html" class="btn btn-primary">Add to cart</a>
+      <br>
+      <br>
+      <a href="Shop.html" class="btn btn-primary">Buy now</a>
+    </p>
+    </div>
+</div>
+
+
+
+  
+<script>
+  /* Initiate Magnify Function
+  with the id of the image, and the strength of the magnifier glass:*/
+  magnify("myimage", 3);
+  </script>
+
+  
+
+
+  <div class="footer">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="About me page.html">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="termsncondition.html">Terms & Conditions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Shop.html">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="subscribe.html">Subscribe</a>
+      </li>
+    </ul>
+  </div>
+
+
+</body>
+</html>
